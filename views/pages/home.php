@@ -27,31 +27,3 @@
    </table>
 </form>
 
-<script>
-    
-  function validateCRPForm() {
-      
-      var proj_name = $('#proj_name').val();
-           
-       if(requireValidation(proj_name)==false)
-       {
-          alert("Please enter a valid project name");
-           return false;
-       }
-       else
-       {
-           return true;
-       }
-   }
-  
-    
-   
-   
-         
-      
-       
-           
-    
-    
-    
-</script>

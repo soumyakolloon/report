@@ -7,7 +7,7 @@
  */
 
 ?>
-<form method="post" action="?controller=reports&action=index">
+<form method="post" action="?controller=reports&action=index" onsubmit="return validateReportForm();">
     
     <table>
         <tr>

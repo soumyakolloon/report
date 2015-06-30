@@ -8,7 +8,7 @@
 ?>
 <h1>Bugs entry</h1>
 
-<form method="post" action="?controller=pages&action=savestatus">
+<form method="post" action="?controller=pages&action=savestatus" onsubmit="return validateStatusPForm();">
     
    <table>
         <tr>
@@ -17,6 +17,7 @@
             </td>
             <td>
                <select id="project_list" name="project_list">
+                   <option value="">Select a Project</option>
                 <?php foreach($projects as $prj) { ?>
                    <option value="<?php echo $prj['id']; ?>"><?php echo $prj['name']; ?></option>
                 <?php } ?>           
@@ -38,7 +39,7 @@
                 <label>No. of Bugs </label>
             </td>
             <td>
-                  <input type="text" id="bugs" value="" name="bugs">
+                  <input type="text" id="bugs" value="" name="bugs" id="bugs" >
             </td>
         </tr>
         <tr>
