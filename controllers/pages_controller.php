@@ -100,12 +100,13 @@
 	
      public function redirecturl($controller, $action, $params=null)
      {
+         $baseurl = BASE_URL;
          
          $fullurl = $controller.'&action='.$action;
          if($params!=null)
              $fullurl.='&params='.$params;
          
-          header('Location: http://localhost/report?controller='.$fullurl);
+          header('Location: '.$baseurl.'?controller='.$fullurl);
      }
 	
   }

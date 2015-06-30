@@ -2,6 +2,9 @@
 
   ini_set('display_errors','off');
   
+  define('BASE_URL', 'http://localhost/report');
+ 
+  
   require_once('connection.php');
   
   if (isset($_GET['controller']) && isset($_GET['action'])) {

@@ -18,6 +18,7 @@
 
         <div id="menu_nav">
         <ul>
+            <li><a href="<?php echo BASE_URL; ?>">Home</a></li>
         <li><a href="?controller=pages&action=home">Create Project</li></a>
         <li><a href="?controller=pages&action=createstatus">Status</a></li>
         <li><a href="?controller=pages&action=reportdata">Reports</a></li>
@@ -27,7 +28,7 @@
      
     </header>
 
-    <?php require_once('routes.php'); ?>
+    <?php  require_once('routes.php'); ?>
 	
      <script src="http://code.highcharts.com/highcharts.js"></script>
      <script src="http://code.highcharts.com/modules/exporting.js"></script>
