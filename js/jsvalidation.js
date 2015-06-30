@@ -5,6 +5,7 @@
  */
 
 $(function() {
+   
 //    $( "#datepicker" ).datepicker();
 //    
 //    $("#datepicker").on("change",function(){
@@ -13,14 +14,14 @@ $(function() {
 //        alert(selected);
 //    });
 var curdate = new Date().toJSON().slice(0,10);
-var date = $('#datepicker').datepicker({ dateFormat: 'yy-mm-dd',
+var date = $('#datepicker').datepicker({ dateFormat: 'dd-mm-yy',
 
 maxDate:curdate
 }).val(curdate);
   
-var datefrom = $('#datepickerfrom').datepicker({ dateFormat: 'yy-mm-dd'}).val();
+var datefrom = $('#datepickerfrom').datepicker({ dateFormat: 'dd-mm-yy'}).val();
 
-var dateto = $('#datepickerto').datepicker({ dateFormat: 'yy-mm-dd',
+var dateto = $('#datepickerto').datepicker({ dateFormat: 'dd-mm-yy',
 
 maxDate: curdate
 }).val();
@@ -28,16 +29,7 @@ maxDate: curdate
 
 
 });
-function checkFirstVisit() {
-  if(document.cookie.indexOf('mycookie')==-1) {
-    // cookie doesn't exist, create it now
-    document.cookie = 'mycookie=1';
-  }
-  else {
-    // not first visit, so alert
-  document.cookie = 'mycookie= -1';
-  }
- }
+
 
 
 function requireValidation(id)

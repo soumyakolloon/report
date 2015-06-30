@@ -11,6 +11,7 @@
    public function home() {
           
            session_unset();
+          
 	  require_once('views/pages/home.php');
     }
 	
@@ -23,49 +24,56 @@
     
     public function createform()
     {
-         
+        
         if(isset($_POST) && !empty($_POST))
         {
             $proj_name = $_POST['proj_name'];
             
             if(!empty($_POST['proj_name']))
             {
+                
               $project_exist = Project::findByattr($proj_name);
               
               if($project_exist)
-              {
-                  $_SESSION['success']=2;
-                   require_once('views/pages/home.php');
+              { 
+                  $msg=0;
+                
+                 $this->redirecturl('pages', 'home', '0');  
               }
               else
               {
               $project = Project::insert($proj_name);
                               
                 if($project==true)
-                {    $_SESSION['success']=1;
-                 require_once('views/pages/home.php');
+                {    
+                
+                $msg=1;
+               
+               $this->redirecturl('pages', 'home', '1');
+                
                 }
-                else{
-                     $_SESSION['success']=0;
-                 require_once('views/pages/home.php');
-                }
+//                else{
+//                     $_SESSION['success']=0;
+//                 require_once('views/pages/home.php');
+//                }
               }     
             }
         }
         else
         {
-             $_SESSION['success'] = "Nodata";
-              require_once('views/pages/home.php');
+             $msg=0;
+             $this->redirecturl('pages', 'home', '0');
+              
         }
         
-       
+      
     }
     
     public function createstatus()
     {
         
         $projects = Project::all();
-       
+      
         require_once('views/pages/status.php');
     }
     
@@ -80,9 +88,8 @@
         $bugsave = Project::insertBugs($pr_id, $dateofbug, $bugs);
         
         if($bugsave)
-            echo '<p style="color:green"><strong>Saved successfully</strong></p>';
-        
-        require_once('views/pages/status.php');
+         $this->redirecturl('pages', 'createstatus', 'true');
+      
     }
     
     public function reportdata()
@@ -91,7 +98,15 @@
         require_once('views/pages/reportinput.php');
     }
 	
-
+     public function redirecturl($controller, $action, $params=null)
+     {
+         
+         $fullurl = $controller.'&action='.$action;
+         if($params!=null)
+             $fullurl.='&params='.$params;
+         
+          header('Location: http://localhost/report?controller='.$fullurl);
+     }
 	
   }
 ?>

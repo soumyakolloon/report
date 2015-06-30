@@ -7,7 +7,10 @@
  */
 ?>
 <h1>Bugs entry</h1>
-
+<?php 
+if(isset($_GET['params']) && $_GET['params']==true)
+echo '<p class="confirm"><strong>Saved successfully</strong></p>';
+?>
 <form method="post" action="?controller=pages&action=savestatus" onsubmit="return validateStatusPForm();">
     
    <table>
@@ -39,7 +42,7 @@
                 <label>No. of Bugs </label>
             </td>
             <td>
-                  <input type="text" id="bugs" value="" name="bugs" id="bugs" >
+                  <input type="text" id="bugs" value="" name="bugs" id="bugs">
             </td>
         </tr>
         <tr>

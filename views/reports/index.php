@@ -10,7 +10,7 @@ var yaxis_data = <?php echo $result_array; ?>;
             type: 'column'
         },
         title: {
-            text: 'Stacked column chart'
+            text: 'Bug Report'
         },
         xAxis: {
             categories: xaxis_data
@@ -18,7 +18,7 @@ var yaxis_data = <?php echo $result_array; ?>;
         yAxis: {
             min: 0,
             title: {
-                text: 'Total fruit consumption'
+                text: 'Number of bugs per project'
             },
             stackLabels: {
                 enabled: true,
@@ -28,6 +28,9 @@ var yaxis_data = <?php echo $result_array; ?>;
                 }
             }
         },
+        credits: {
+      enabled: false
+  },
         legend: {
             align: 'right',
             x: -30,

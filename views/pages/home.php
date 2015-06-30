@@ -1,17 +1,13 @@
 <form method="post" action="?controller=pages&action=createform" onsubmit="return validateCRPForm();" id="create_projct_form" >
-   <div class="confirm">
-    <?php if(isset($_SESSION['success']) && $_SESSION['success'] == 1)  { ?>
-    <label>Project Saved Successfully</label>
-    <?php } else if(isset($_SESSION['success']) && $_SESSION['success']==0){ ?>
-    <label>Error occured while saving the project</label>
-    <?php } else if(isset($_SESSION['success']) && $_SESSION['success']=='Nodata'){ ?>
-    <label>Please enter valid data</label>
-    
-    <?php } else if(isset($_SESSION['success']) && $_SESSION['success']==2){ ?>
-    <label>Project already exist</label>
-    <?php } ?>
-    </div>
-    
+   
+    <?php if(isset($_GET['params'])&& $_GET['params']=='1') {
+        
+         echo '<p class="confirm">Project created successfully</p>';
+    }
+   if(isset($_GET['params']) && $_GET['params']== '0') {
+         echo '<p class="error_msg">Project already exist</p>';
+    }
+?>
     <table>
         <tr>
             <td><label>Project Name: </label>

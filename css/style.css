@@ -20,7 +20,8 @@ body{
     
 }
 .confirm{
-    color:green
+    color:#0B610B;
+    font-weight: bold;
 }
 .formElement{
  padding: 10px;   
@@ -31,7 +32,7 @@ body{
   /*margin-right: 181px;*/
 }
 .error_msg{
-    padding:100px;
+  
     color:#FF0000;
 }
 .footer {

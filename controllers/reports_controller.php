@@ -23,13 +23,11 @@ Date: 29/06/2015
           $datefrom = $_POST['datepickerfrom'];
           $dateto = $_POST['datepickerto'];
       }
-      else
-      {
-          echo 'error';
-         header("Location: ".base_url."?controller=pages&action=reportdata");
-      }
-        
-	 /**Get all projects from databse */
+      
+     
+      
+      
+	 /**Get all projects from databa se */
       $result_array =Report::all();
 	 
 	 foreach($result_array as $key=>$res)
@@ -76,10 +74,10 @@ Date: 29/06/2015
 	
 	
 		
-	function getDatesFromRange($start, $end){
+function getDatesFromRange($start, $end){
     $dates = array($start);
     while(end($dates) < $end){
-        $dates[] = date('Y-m-d', strtotime(end($dates).' +1 day'));
+        $dates[] = date('d-m-Y', strtotime(end($dates).' +1 day'));
     }
     return $dates;
 	}
