@@ -8,20 +8,33 @@
 
 ?>
 <form method="post" action="?controller=reports&action=index">
- <div class="formElement">
-        <label>Select From Date</label>
-        <input type="text" id="datepickerfrom" value="" name="datepickerfrom">
-        
-    </div>
     
-     <div class="formElement">
-        <label>Select To Date</label>
-        <input type="text" id="datepickerto" value="" name="datepickerto">
+    <table>
+        <tr>
+            <td>
+                <label>Select From Date</label>
+            </td>
+            <td>
+               <input type="text" id="datepickerfrom" value="" name="datepickerfrom">  
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Select To Date</label>
+            </td>
+            <td>
+              <input type="text" id="datepickerto" value="" name="datepickerto"> 
+            </td>
+        </tr>
         
-    </div>
+        <tr>
+            <td></td>
+            <td>
+                 <input type="submit" value="Generate Report" class="buttonClass">
+            </td>
+        </tr>
+    </table>
+        
     
-     <div class="formElement">
-        <input type="submit" value="Generate Report" class="buttonClass">
-    </div>
     
 </form>

@@ -80,7 +80,7 @@
         $bugsave = Project::insertBugs($pr_id, $dateofbug, $bugs);
         
         if($bugsave)
-            echo 'Saved successfully';
+            echo '<p style="color:green"><strong>Saved successfully</strong></p>';
         
         require_once('views/pages/status.php');
     }

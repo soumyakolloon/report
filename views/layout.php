@@ -21,7 +21,7 @@
         <li><a href="?controller=pages&action=home">Create Project</li></a>
         <li><a href="?controller=pages&action=createstatus">Status</a></li>
         <li><a href="?controller=pages&action=reportdata">Reports</a></li>
-        <li><a href="?controller=reports&action=index">Generate Report</a></li>
+        <!--<li><a href="?controller=reports&action=index">Generate Report</a></li>-->
         </ul>
         </div>
      
