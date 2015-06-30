@@ -58,7 +58,10 @@ var yaxis_data = <?php echo $result_array; ?>;
                 }
             }
         },
-        series: yaxis_data
+        series: yaxis_data,
+        exporting:{
+ enabled: true
+}
     });
 });
 	       

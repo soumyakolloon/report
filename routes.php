@@ -4,6 +4,7 @@
 
     switch($controller) {
       case 'pages':
+          require_once('models/project.php');
         $controller = new PagesController();
       break;
       case 'reports':
@@ -17,7 +18,7 @@
   }
 
   // we're adding an entry for the new controller and its actions
-  $controllers = array('pages' => ['home', 'error', 'index'],
+  $controllers = array('pages' => ['index', 'home', 'error',  'createform', 'createstatus', 'savestatus','reportdata'],
                        'reports' => ['index', 'show']);
 
   if (array_key_exists($controller, $controllers)) {

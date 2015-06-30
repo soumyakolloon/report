@@ -18,6 +18,17 @@ Date: 29/06/2015
 	
     public function index() {
      
+      if(isset($_POST) && !empty($_POST['datepickerfrom']) && !empty($_POST['datepickerto']))
+      {
+          $datefrom = $_POST['datepickerfrom'];
+          $dateto = $_POST['datepickerto'];
+      }
+      else
+      {
+          echo 'error';
+         header("Location: ".base_url."?controller=pages&action=reportdata");
+      }
+        
 	 /**Get all projects from databse */
       $result_array =Report::all();
 	 
@@ -28,7 +39,7 @@ Date: 29/06/2015
 	 }
 	
 		
-	$date_range = $this->getDatesFromRange('2015-01-01', '2015-01-03');
+	$date_range = $this->getDatesFromRange($datefrom, $dateto);
 	
 	  $xaxis_data = json_encode($date_range);
 	  
@@ -48,9 +59,6 @@ Date: 29/06/2015
   	
 	$result_array = json_encode($project);
 	
-	
-	
-	  
       require_once('views/reports/index.php');
     }
 
