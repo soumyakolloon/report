@@ -20,7 +20,7 @@
 		
 		return $result_array;
 
-    }
+   }
 
     public static function find($id, $dt) {
       $db = Db::getInstance();

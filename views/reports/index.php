@@ -1,7 +1,10 @@
 <script type="text/javascript">
 
 $(function () {
-
+Highcharts.setOptions({
+        colors: '<?php echo $colors; ?>';
+    });
+    
 var xaxis_data = <?php echo $xaxis_data; ?>;
 var yaxis_data = <?php echo $result_array; ?>;
 
@@ -13,7 +16,8 @@ var yaxis_data = <?php echo $result_array; ?>;
             text: 'Bug Report'
         },
         xAxis: {
-            categories: xaxis_data
+            categories: xaxis_data,
+           
         },
         yAxis: {
             min: 0,
@@ -24,18 +28,19 @@ var yaxis_data = <?php echo $result_array; ?>;
                 enabled: true,
                 style: {
                     fontWeight: 'bold',
+                    
                     color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
                 }
             }
         },
         credits: {
-      enabled: false
-  },
+              enabled: false
+            },
         legend: {
-            align: 'right',
-            x: -30,
+            align: 'left',
+            x: 25,
             verticalAlign: 'top',
-            y: 25,
+            y: -10,
             floating: true,
             backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
             borderColor: '#CCC',
@@ -54,22 +59,98 @@ var yaxis_data = <?php echo $result_array; ?>;
                 stacking: 'normal',
                 dataLabels: {
                     enabled: true,
+                    align:"center",
                     color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
                     style: {
-                        textShadow: '0 0 3px black'
-                    }
+                         fontWeight: 'bold',
+                         
+                    },
+                    padding:20,
+                    crop:false,
+                    zIndex:10,
+                    x:0.5,
+                    y:0
                 }
             }
         },
         series: yaxis_data,
-        exporting:{
- enabled: true
-}
+			//        exporting:{
+			// enabled: true
+			//}
+					
+
+        exporting: {
+            enabled:true,
+			scale: 1,
+            buttons: {
+            contextButton: {
+                
+                symbolStroke: "white",
+                symbolSize: 24,
+                symbolX: 23,
+                symbolY: 21,
+                symbolStrokeWidth: 2,
+                  
+                
+        
+        theme: {
+             fill:"red"
+                    },
+                    height: 40,
+                    width: 48,
+
+                }
+            },  width:2000
+        },
+        
+                lang: {
+            printChart: 'Export Report',
+            downloadPNG: 'Download as PNG',
+            downloadJPEG: 'Download as JPEG',
+            downloadPDF: 'Download as PDF',
+            downloadSVG: 'Download as SVG',
+            contextButtonTitle: 'Export menu'
+        },
+        navigation: {
+            menuStyle: {
+                border: '1px solid black',
+                background: 'pink',
+                padding: '5px 0'
+            },
+            menuItemStyle: {
+                padding: '0 10px',
+                background: 'NONE',
+                color: '#303030',
+                fontSize: '18px'
+            },
+            menuItemHoverStyle: {
+                background: '#4572A5',
+                color: '#FFFFFF'
+            },
+        
+            buttonOptions: {
+                symbolFill: 'red',
+                symbolSize: 14,
+                symbolStroke: 'red',
+                symbolStrokeWidth: 3,
+                symbolX: 12.5,
+                symbolY: 10.5,
+                align: 'right',
+                buttonSpacing: 3,
+                height: 22,
+                // text: null,
+                theme: {
+                    fill: 'white', // capture hover
+                    stroke: 'none'
+                },
+                verticalAlign: 'top',
+                width: 24
+            }
+        },
+        
     });
 });
-	       
-		</script>
+</script>
 		
-		
-		<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+ <div id="container" ></div>
 

@@ -8,8 +8,11 @@
 ?>
 <h1>Bugs entry</h1>
 <?php 
-if(isset($_GET['params']) && $_GET['params']==true)
+if(isset($_GET['params']) && $_GET['params']=='true')
 echo '<p class="confirm"><strong>Saved successfully</strong></p>';
+if(isset($_GET['params']) && $_GET['params']=='false')
+echo '<p class="error_msg"><strong>Bugs report on this date is already entered.</strong></p>'; 
+    
 ?>
 <form method="post" action="?controller=pages&action=savestatus" onsubmit="return validateStatusPForm();">
     

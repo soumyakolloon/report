@@ -1,12 +1,8 @@
 <?php
 /**
-
 controller to get analtics of test reports
-
 Created by @Soumya
-
 Date: 29/06/2015
-
 */
   class ReportsController {
 	  
@@ -17,7 +13,7 @@ Date: 29/06/2015
 	***/
 	
     public function index() {
-     
+    
       if(isset($_POST) && !empty($_POST['datepickerfrom']) && !empty($_POST['datepickerto']))
       {
           $datefrom = $_POST['datepickerfrom'];
@@ -25,18 +21,26 @@ Date: 29/06/2015
       }
       
      
-      
+      $projectsArray = Project::all();
       
 	 /**Get all projects from databa se */
       $result_array =Report::all();
-	 
+	 if(!empty($result_array))
+         {
 	 foreach($result_array as $key=>$res)
 	 {
 		 $project[$key]['name'] = $res['name'];
 		 $projects[$key]['id'] = $res['id'];
 	 }
 	
-		
+         }
+         else
+         {
+          echo '<p class="error_msg">No data available in this range</p> <p>Please click <a href="?controller=pages&action=reportdata">Report</a> to select another range</p>';
+          exit;
+         }
+         
+         
 	$date_range = $this->getDatesFromRange($datefrom, $dateto);
 	
 	  $xaxis_data = json_encode($date_range);
@@ -75,15 +79,17 @@ Date: 29/06/2015
 	
 		
 function getDatesFromRange($start, $end){
-    $dates = array($start);
-    while(end($dates) < $end){
-        $dates[] = date('d-m-Y', strtotime(end($dates).' +1 day'));
-    }
-    return $dates;
-	}
+
 	
 	
+        $datediff = strtotime($end) - strtotime($start);
+        $datediff = floor($datediff/(60*60*24));
+        for($i = 0; $i < $datediff + 1; $i++){
+            $dates[] = date("d-m-Y", strtotime($start . ' + ' . $i . 'day'));
+        }
 	
-	
+	 return $dates;
+  }
+   
   }
 ?>

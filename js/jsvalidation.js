@@ -14,10 +14,20 @@ $(function() {
 //        alert(selected);
 //    });
 var curdate = new Date().toJSON().slice(0,10);
+
+function formatDate(curdate) {
+  var p = curdate.split(/\D/g);
+return [p[2],p[1],p[0] ].join("-");
+}
+
+var currdate = formatDate(curdate);
+
+
+
 var date = $('#datepicker').datepicker({ dateFormat: 'dd-mm-yy',
 
-maxDate:curdate
-}).val(curdate);
+maxDate:currdate
+}).val(currdate);
   
 var datefrom = $('#datepickerfrom').datepicker({ dateFormat: 'dd-mm-yy'}).val();
 
@@ -115,8 +125,23 @@ function isInt(n){
     
     function validateReportForm()
     {
+       
          var datepickerfrom = $('#datepickerfrom').val();
          var datepickerto = $('#datepickerto').val();
+         
+     var datef = datepickerfrom.substring(0, 2);
+    var monthf = datepickerfrom.substring(3, 5);
+    var yearf = datepickerfrom.substring(6, 10);
+ 
+    var datefCompare = new Date(yearf, monthf - 1, datef);
+    
+    var datet = datepickerto.substring(0, 2);
+    var montht = datepickerto.substring(3, 5);
+    var yeart = datepickerto.substring(6, 10);
+ 
+    var datetCompare = new Date(yeart, montht - 1, datet);
+   
+         
         if(requireValidation(datepickerfrom)==false)
        {
            alert("Please select a From Date");
@@ -127,7 +152,7 @@ function isInt(n){
            alert("Please select a To Date");
            return false;
        }
-       else if(datepickerto<=datepickerfrom)
+       else if(datetCompare<datefCompare)
          {
              alert("The To Date should be a date after from date");
              return false;

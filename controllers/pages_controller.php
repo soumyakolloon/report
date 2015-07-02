@@ -84,12 +84,25 @@
         $pr_id = $_POST['project_list'];
         $dateofbug = $_POST['datepicker'];
         $bugs = $_POST['bugs'];
-      
+        
+        $exst = Project::checkBugsbypro($pr_id, $dateofbug);
+        
+        if($exst)
+        {
+            $update = Project::updateBugsbypro($bugs, $pr_id, $dateofbug);
+            if($update)
+            $this->redirecturl('pages', 'createstatus', 'true');
+            else
+               $this->redirecturl('pages', 'createstatus', 'false'); 
+        }
+        else
+        {
         $bugsave = Project::insertBugs($pr_id, $dateofbug, $bugs);
+        
         
         if($bugsave)
          $this->redirecturl('pages', 'createstatus', 'true');
-      
+        }
     }
     
     public function reportdata()

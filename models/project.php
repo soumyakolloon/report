@@ -34,7 +34,7 @@
     {
         
         $db = Db::getInstance();
-        $sql = "INSERT INTO `test`.`project` (`proj_id`, `name`) VALUES (NULL, '$name')";
+        $sql = "INSERT INTO `project` (`proj_id`, `name`) VALUES (NULL, '$name')";
         $result=mysqli_query($db,$sql);
         
         if($result)
@@ -45,7 +45,7 @@
     }
     public static function findByattr($name){
         $db = Db::getInstance();
-        $sql = "select * from `test`.`project` where name='".$name."'";
+        $sql = "select * from `project` where name='".$name."'";
         $result=mysqli_query($db,$sql);
       
         $result_count = mysqli_num_rows($result);
@@ -64,8 +64,39 @@
        //  echo $dateofbug; exit;
         
         $db = Db::getInstance();
-        $sql = "INSERT INTO `test`.`quality_data` (`id`, `project_id`, `date`, `bugs`) VALUES (NULL, '$pr_id', '$dateofbug', '$bugs')";
+        $sql = "INSERT INTO `quality_data` (`id`, `project_id`, `date`, `bugs`) VALUES (NULL, '$pr_id', '$dateofbug', '$bugs')";
         //echo $sql; exit;
+        $result=mysqli_query($db,$sql);
+        
+        if($result)
+            return true;
+        else
+            return false;
+        
+    }
+    
+      public static function checkBugsbypro($pr_id, $dateofbug)
+    {
+             
+        $db = Db::getInstance();
+        $sql = "select * from `quality_data` where project_id='".$pr_id."' and date='".$dateofbug."'";
+        $result=mysqli_query($db,$sql);
+      
+        $result_count = mysqli_num_rows($result);
+       
+        if($result_count!=0)
+             return true;
+        else
+            return false;
+        
+    }
+    
+    
+     public static function updateBugsbypro($bugs, $pr_id, $dateofbug)
+    {
+             
+        $db = Db::getInstance();
+        $sql = "update`quality_data` set bugs='".$bugs."' Where project_id='".$pr_id."' and date='".$dateofbug."'";
         $result=mysqli_query($db,$sql);
         
         if($result)

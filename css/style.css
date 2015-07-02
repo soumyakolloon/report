@@ -35,6 +35,14 @@ body{
   
     color:#FF0000;
 }
+
+
+#container {
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+
 .footer {
 height: 220px !important;
 }

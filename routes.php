@@ -9,6 +9,7 @@
       break;
       case 'reports':
         // we need the model to query the database later in the controller
+          require_once('models/project.php');
         require_once('models/report.php');
         $controller = new ReportsController();
       break;
@@ -17,9 +18,12 @@
     $controller->{ $action }();
   }
 
+  $arr = array('index', 'home', 'error',  'createform', 'createstatus', 'savestatus','reportdata');
+  $arr2 = array('index', 'show');
+  
+  
   // we're adding an entry for the new controller and its actions
-  $controllers = array('pages' => ['index', 'home', 'error',  'createform', 'createstatus', 'savestatus','reportdata'],
-                       'reports' => ['index', 'show']);
+  $controllers = array('pages' => $arr, 'reports' => $arr2);
 
   if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {
