@@ -5,9 +5,6 @@ Created by @Soumya
 Date: 29/06/2015
 */
   class ReportsController {
-	  
-	  
-	  
 	/**
 	** Function to plot graphs
 	***/

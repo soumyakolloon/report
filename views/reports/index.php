@@ -1,9 +1,7 @@
 <script type="text/javascript">
 
 $(function () {
-Highcharts.setOptions({
-        colors: '<?php echo $colors; ?>';
-    });
+
     
 var xaxis_data = <?php echo $xaxis_data; ?>;
 var yaxis_data = <?php echo $result_array; ?>;
