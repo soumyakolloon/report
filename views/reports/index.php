@@ -1,8 +1,7 @@
 <script type="text/javascript">
 
 $(function () {
-
-    
+  
 var xaxis_data = <?php echo $xaxis_data; ?>;
 var yaxis_data = <?php echo $result_array; ?>;
 
@@ -26,7 +25,6 @@ var yaxis_data = <?php echo $result_array; ?>;
                 enabled: true,
                 style: {
                     fontWeight: 'bold',
-                    
                     color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
                 }
             }
